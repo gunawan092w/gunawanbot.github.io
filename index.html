@@ -1,1 +1,167 @@
----HTML Test for ntmusic.github.io---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+        <link href="https://raw.githubusercontent.com/Hadi-koubeissi/Discord-bot-website-template/Main/src/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link rel="shortcut icon" href="./img/" type="image/x-icon">
+        <title>NoteTop Music</title>
+    </head>
+    <body>
+        <div class="navbar navbar-expand-md bg-dark navbar-dark">
+            <div class="container">
+                <a href="" class="navbar-brand text-info">NoteTop Music</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="mainmenu">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a href="#Features" class="nav-link">Features</a></li>
+                        <li class="nav-item"><a href="#Statics" class="nav-link">Statics</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="linksdrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Links</a>
+                            <ul class="dropdown-menu bg-dark" aria-labelledby="linksdrop">
+                                <li><a class="dropdown-item text-muted" href="https://discord.com/oauth2/authorize?client_id=1216410879059427429&permissions=274914937344&scope=bot+applications.commands">Invite</a></li>
+                                <li><a class="dropdown-item text-muted" href="https://github.com/gunawan092w/notetop-music">Github</a></li>
+                                <li><a class="dropdown-item text-muted" href="https://discord.gg/">Support Server</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <section class="bg-dark text-light text-center py-5">
+            <div class="container">
+                <div class="d-flex">
+                    <div>
+                        <h1><span class="text-info">NoteTop</span> Music</h1>
+                        <p>NoteTop Music is a discord bot that allows you to listen music in Discord Server!</p>
+                        <a class="btn btn-info" href="https://discord.com/oauth2/authorize?client_id=1216410879059427429&permissions=274914937344&scope=bot+applications.commands">Invite Bot</a>
+                        <a class="m-2 btn btn-light" href="https://discord.gg/">Support Server</a>
+                    </div>
+                    <img class="img-fluid w-50" src="./img/ArisBot.svg" alt="">
+                </div>
+            </div>
+        </section>
+        <section  id="Features" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Features</h2>
+                <div class="row text-center">
+                    <div class="col-sm">
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="h1 mt-3">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div class="card-body text-center">
+                                <h4 class="card-title text-info">Platform</h4>
+                                <p class="card-text">We support Youtube Music, SoundCloud, and Spotify!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="h1 mt-3">
+                                <i class="bi bi-capslock-fill"></i>
+                            </div>
+                            <div class="card-body text-center">
+                                <h4 class="card-title text-info">24/7 Online</h4>
+                                <p class="card-text">Our bot is hosted 24/7 so that users can use it. We do not support 24/7 mode yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="h1 mt-3">
+                                <i class="bi bi-folder2-open"></i>
+                            </div>
+                            <div class="card-body text-center">
+                                <h4 class="card-title text-info">Open Source</h4>
+                                <p class="card-text">Our bot is Open Source! Feel free to check it out on <a href="https://github.com/gunawan092w/notetop-music">here!</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            function fetchStats() {
+                fetch('/stats')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('guilds').innerHTML = `<h5>${data.guilds}</h5>`;
+                    document.getElementById('users').innerHTML = `<h5>${data.users}</h5>`;
+                    document.getElementById('channels').innerHTML = `<h5>${data.channels}</h5>`;
+                }).catch(error => console.error('Error fetching statistics:', error));
+            }
+            document.addEventListener('DOMContentLoaded', fetchStats);
+            setInterval(fetchStats, 5000);
+        </script>
+        <section id="Statics" class="py-5 bg-light text-black">
+            <div class="container">
+                <div class="py-2 text-center">
+                    <h2>Statics:</h2>
+                </div>
+                <div class="row align-items-center justify-content-center text-center -5">
+                    <div class="col-sm p-5 h1">
+                        <i class="bi bi-hdd-stack text-primary"></i>
+                        <div id="guilds"></div>
+                        <h5>Server</h5>
+                    </div>
+                    <div class="col-sm p-5 h1">
+                        <i class="bi bi bi-people-fill text-primary"></i>
+                        <div id="users"></div>
+                        <h5>Users</h5>
+                    </div>
+                    <div class="col-sm p-5 h1">
+                        <i class="bi bi bi-hash text-primary"></i>
+                        <div id="channels"></div>
+                        <h5>Channels</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="footer-clean bg-dark">
+            <footer>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Quick access</h3>
+                            <ul>
+                                <li><a href="#Features">Features</a></li>
+                                <li><a href="#Statistics">Statistics</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="https://github.com/gunawan092w/notetop-music/LICENSE">License</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Links</h3>
+                            <ul>
+                                <li><a href="#">Support server</a></li>
+                                <li><a href="#">Invite bot</a></li>
+                                <li><a href="#">Github</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 item social"><a href="#"><ion-icon name="logo-discord"></ion-icon></a>
+                            <p class="copyright">© Gunawan092w 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-footer font-small text-light mt-5">
+                    <div class="footer-copyright text-center">© NoteTop Studio 2024 -
+                        <a href="https://github.com/Hadi-koubeissi/Discord-bot-website-template">A Template by Hadi Koubeissi</a>
+                    </div>
+                </div>
+            </footer>
+        </div>        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </body>
+</html>
