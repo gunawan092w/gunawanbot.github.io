@@ -88,7 +88,7 @@
         </section>
         <script>
             function fetchStats() {
-                fetch('/stats')
+                fetch('https://ntmusic.gunawan092w1.eu.org/stats')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('guilds').innerHTML = `<h5>${data.guilds}</h5>`;
